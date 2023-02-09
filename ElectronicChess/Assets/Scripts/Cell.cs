@@ -4,6 +4,7 @@
  * feature: 游戏界面的最基本单位
  */
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,7 +18,16 @@ public class Cell : MonoBehaviour
 
     public GameObject mask;
 
-    private Piece onThis;
+    public GameObject cellBorderUp, cellBorderRight;
+
+    [Header("点击灵敏度（点击持续时间在此之内的将被忽略）")]
+    public float clickSensitivity;
+
+    private Piece pieceWhereon;
+
+    private Action actionOnClicked;
+
+    private float timeCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -31,13 +41,44 @@ public class Cell : MonoBehaviour
             
     }
 
-    public void Init(Vector2Int worldPosition)
+    public void Init(Vector2Int worldPosition, Action actionOnClicked)
     {
         this.worldPosition = worldPosition;
+        this.actionOnClicked = actionOnClicked;
     }
 
-    private void OnMouseUpAsButton()
+    /// <summary>
+    /// 为右边界的格子开启边界模式
+    /// </summary>
+    public void BorderedModeRight()
     {
-        Debug.Log($"{this.worldPosition} cell is clicked!");
+        cellBorderRight.SetActive(true);
+    }
+
+    /// <summary>
+    /// 为上边界的格子开启边界模式
+    /// </summary>
+    public void BorderedModeUp()
+    {
+        cellBorderUp.SetActive(true);
+    }
+
+
+
+    private void OnMouseDown()
+    {
+        Debug.Log($"{this.worldPosition} cell is mousedowned!");
+        //actionOnClicked.Invoke();
+        timeCounter = Time.time;
+    }
+
+    private void OnMouseUp()
+    {
+        Debug.Log($"{this.worldPosition} cell is mouseuped!");
+        float timeSpent = Time.time - timeCounter;
+        if (timeSpent > clickSensitivity && GameManager.instance.inDrag == false)
+        {
+            Debug.Log($"{this.worldPosition} cell is clicked!");
+        }
     }
 }

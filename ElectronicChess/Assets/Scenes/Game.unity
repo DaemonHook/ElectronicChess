@@ -208,7 +208,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -251,7 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cbcf7ed76f4ad4c8da075552b787aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tolerance: 0
+  tolerance: 0.5
+  sensitivity: 0.15
   duration: 0.125
 --- !u!1 &1243823899
 GameObject:
@@ -329,7 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell: {fileID: 4783150136075304681, guid: e7db726d257200649a3486f0a8af2ae7, type: 3}
-  size: {x: 5, y: 5}
 --- !u!1 &2101401263
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +339,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2101401264}
+  - component: {fileID: 2101401266}
+  - component: {fileID: 2101401267}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -361,3 +363,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2101401266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101401263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b63f7f90c1647c795c2c44f936f146, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraMove: {fileID: 519420033}
+  gridGO: {fileID: 1462004810}
+  terrainGO: {fileID: 182496073}
+  unitsGO: {fileID: 1243823899}
+  inDrag: 0
+--- !u!114 &2101401267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101401263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ff03e4e46db724e9010e6b4bec6930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

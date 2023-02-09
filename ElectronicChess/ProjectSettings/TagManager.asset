@@ -42,6 +42,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Cell
+    uniqueID: 336896775
+    locked: 0
   - name: Mask
     uniqueID: 950211245
     locked: 0
