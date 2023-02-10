@@ -57,8 +57,8 @@ public class CameraMove : MonoBehaviour
             if (travel.magnitude / transform.GetComponent<Camera>().orthographicSize > sensitivity)
             {
                 GameManager.instance.inDrag = true;
-                CameraMoveWithTolerance(transform.position - travel);
             }
+            CameraMoveWithTolerance(transform.position - travel);
             yield return null;
         }
         GameManager.instance.inDrag = false;
@@ -66,22 +66,8 @@ public class CameraMove : MonoBehaviour
 
     public void CameraMoveWithTolerance(Vector3 target)
     {
-        if (target.y < -tolerance)
-        {
-            target.y = -tolerance;
-        }
-        if (target.x < -tolerance)
-        {
-            target.x = -tolerance;
-        }
-        if (target.y > mapSize.y + tolerance)
-        {
-            target.y = mapSize.y + tolerance;
-        }
-        if (target.x > mapSize.x + tolerance)
-        {
-            target.x = mapSize.x + tolerance;
-        }
+        target.x = Mathf.Clamp(target.x, 0.0f + tolerance, mapSize.x - tolerance);
+        target.y = Mathf.Clamp(target.y, 0.0f + tolerance, mapSize.y - tolerance);
         transform.DOMove(target, duration);
     }
 

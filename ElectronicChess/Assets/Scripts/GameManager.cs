@@ -27,12 +27,15 @@ public class GameManager : MonoBehaviour
     public bool inDrag = false;
     #endregion
 
+    #region 测试
+    [Header("地图大小")]
+    public Vector2Int size;
+    #endregion
+
     private void Awake()
     {
         instance = this;
         grid = gridGO.GetComponent<Grid>();
-
-
     }
 
     private void InitGame()
@@ -40,14 +43,14 @@ public class GameManager : MonoBehaviour
         grid.Init();
 
         cameraMove.Init(new Vector2(mapSize.x, mapSize.y), 
-            new Vector2(math.min(4.0f, (float)mapSize.x / 2), math.min(4.0f, (float)mapSize.y / 2)));
+            new Vector2(mapSize.x / 2, mapSize.y / 2));
     }
 
     // Start is called before the first frame update
     void Start()
     {
         // TEST
-        mapSize = new Vector2Int(30, 20);
+        mapSize = size;
         //
         InitGame();
     }

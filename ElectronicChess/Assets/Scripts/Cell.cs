@@ -16,7 +16,7 @@ public class Cell : MonoBehaviour
 {
     public Vector2Int worldPosition;
 
-    public GameObject mask;
+    public GameObject maskGO;
 
     public GameObject cellBorderUp, cellBorderRight;
 
@@ -27,7 +27,7 @@ public class Cell : MonoBehaviour
 
     private Action actionOnClicked;
 
-    private float timeCounter;
+    private float timeCounter = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -63,22 +63,25 @@ public class Cell : MonoBehaviour
         cellBorderUp.SetActive(true);
     }
 
+    public void SwitchMaskMode(string mode)
+    {
+        maskGO.GetComponent<Mask>().SwitchMode(mode);
+    }
 
 
     private void OnMouseDown()
     {
-        Debug.Log($"{this.worldPosition} cell is mousedowned!");
         //actionOnClicked.Invoke();
         timeCounter = Time.time;
     }
 
     private void OnMouseUp()
     {
-        Debug.Log($"{this.worldPosition} cell is mouseuped!");
         float timeSpent = Time.time - timeCounter;
-        if (timeSpent > clickSensitivity && GameManager.instance.inDrag == false)
+        if (timeCounter > 0.0f && timeSpent > clickSensitivity && GameManager.instance.inDrag == false)
         {
-            Debug.Log($"{this.worldPosition} cell is clicked!");
+            //Debug.Log($"{this.worldPosition} cell is clicked!");
+            actionOnClicked();
         }
     }
 }

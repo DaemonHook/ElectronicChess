@@ -1,7 +1,7 @@
 /*
  * file: Grid.cs
  * author: D.H.
- * feature: 网格层，即Cell所处的层
+ * feature: Grid Layer(网格层，即Cell所处的层)
  */
 
 using UnityEngine;
@@ -19,27 +19,16 @@ public class Grid : MonoBehaviour
 
     // 访问格子的快捷方式
     public Cell[,] cells { get; private set; }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Init()
     {
         CreateGrid(GameManager.instance.mapSize);
     }
 
-    //private void OnCellClicked()
-    //{
-
-    //}
+    private void OnCellClicked(Cell cell)
+    {
+        print($"Grid: cell at {cell.worldPosition} is clicked!");
+    }
 
     private void CreateGrid(Vector2Int size)
     {
@@ -57,6 +46,7 @@ public class Grid : MonoBehaviour
                     new Vector2Int(i, j),
                     () =>
                     {
+                        OnCellClicked(curCell);
                     }
                 );
             }
