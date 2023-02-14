@@ -8,7 +8,11 @@ public class MapData
 {
     public string name;
     public int[] size;
-    
+
+    public string terrainNames;
+    public Vector2Int[] terrainPositions;
+
+    public string unitNames;
 }
 
 public class MapServer : MonoBehaviour

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Cell
+  - Unit
+  - Terrain
   layers:
   - Default
   - TransparentFX
@@ -45,12 +47,12 @@ TagManager:
   - name: Cell
     uniqueID: 336896775
     locked: 0
-  - name: Mask
-    uniqueID: 950211245
-    locked: 0
   - name: Terrain
     uniqueID: 660385947
     locked: 0
   - name: Unit
     uniqueID: 2652150521
+    locked: 0
+  - name: Mask
+    uniqueID: 950211245
     locked: 0

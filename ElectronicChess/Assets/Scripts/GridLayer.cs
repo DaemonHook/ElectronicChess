@@ -6,7 +6,7 @@
 
 using UnityEngine;
 
-public class Grid : MonoBehaviour
+public class GridLayer : MonoBehaviour
 {
     public GameObject cell;
     public Vector2Int gridSize
@@ -20,6 +20,11 @@ public class Grid : MonoBehaviour
     // 访问格子的快捷方式
     public Cell[,] cells { get; private set; }
 
+    /// <summary>
+    /// 当前选择的cell
+    /// </summary>
+    private Cell curCell;
+
     public void Init()
     {
         CreateGrid(GameManager.instance.mapSize);
@@ -28,6 +33,11 @@ public class Grid : MonoBehaviour
     private void OnCellClicked(Cell cell)
     {
         print($"Grid: cell at {cell.worldPosition} is clicked!");
+
+        //TEST
+        curCell?.UnselectedMode();
+        cell.SelectedModeOn();
+        curCell = cell;
     }
 
     private void CreateGrid(Vector2Int size)

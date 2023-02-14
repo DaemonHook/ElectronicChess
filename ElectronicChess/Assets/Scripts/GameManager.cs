@@ -14,13 +14,18 @@ public class GameManager : MonoBehaviour
     // 游戏界面的三个组成元素：网格，地形，单位
     public GameObject gridGO, terrainGO, unitsGO;
 
-    private Grid grid;
+    private GridLayer grid;
     
     #endregion
 
     #region 游戏全局设置
     public Vector2Int mapSize { get; private set; }
+    
+    [Header("点击灵敏度")]
+    public float clickSensitivity;
 
+    [Header("队伍颜色")]
+    public List<Color> teamColors;
     #endregion
 
     #region 游戏状态
@@ -35,7 +40,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        grid = gridGO.GetComponent<Grid>();
+        grid = gridGO.GetComponent<GridLayer>();
     }
 
     private void InitGame()
@@ -43,7 +48,7 @@ public class GameManager : MonoBehaviour
         grid.Init();
 
         cameraMove.Init(new Vector2(mapSize.x, mapSize.y), 
-            new Vector2(mapSize.x / 2, mapSize.y / 2));
+            new Vector2(mapSize.x / 2 - 0.5f, mapSize.y / 2 - 0.5f));
     }
 
     // Start is called before the first frame update

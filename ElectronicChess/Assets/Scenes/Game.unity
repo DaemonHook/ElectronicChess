@@ -167,6 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638d7bc51f4e640e195e16cecade334b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockedLayers: 
+  terrainAddition: 0
+  toll: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +232,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 4.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -272,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66cbcf7ed76f4ad4c8da075552b787aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tolerance: 0.25
+  tolerance: 0
   sensitivity: 0.1
   duration: 0.125
 --- !u!1 &1243823899
@@ -375,6 +378,7 @@ GameObject:
   - component: {fileID: 2101401264}
   - component: {fileID: 2101401266}
   - component: {fileID: 2101401267}
+  - component: {fileID: 2101401268}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -413,8 +417,14 @@ MonoBehaviour:
   gridGO: {fileID: 1462004810}
   terrainGO: {fileID: 182496073}
   unitsGO: {fileID: 1243823899}
+  clickSensitivity: 0
+  teamColors:
+  - {r: 0.9372549, g: 0.35686275, b: 0.6117647, a: 0.8235294}
+  - {r: 0.13333334, g: 0.29411766, b: 0.56078434, a: 0.8235294}
+  - {r: 0.9372549, g: 0.35686275, b: 0.6117647, a: 0.8235294}
+  - {r: 0.9372549, g: 0.35686275, b: 0.6117647, a: 0.8235294}
   inDrag: 0
-  size: {x: 10, y: 8}
+  size: {x: 12, y: 8}
 --- !u!114 &2101401267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,5 +435,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74ff03e4e46db724e9010e6b4bec6930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2101401268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2101401263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b8f0eba451e54df2a5fecf9ab29625f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

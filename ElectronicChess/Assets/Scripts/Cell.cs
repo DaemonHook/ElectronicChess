@@ -20,11 +20,12 @@ public class Cell : MonoBehaviour
 
     public GameObject cellBorderUp, cellBorderRight;
 
+    public GameObject selectedGO;
+
     [Header("点击灵敏度（点击持续时间在此之内的将被忽略）")]
     public float clickSensitivity;
 
-    private Piece pieceWhereon;
-
+    
     private Action actionOnClicked;
 
     private float timeCounter = 0.0f;
@@ -68,6 +69,16 @@ public class Cell : MonoBehaviour
         maskGO.GetComponent<Mask>().SwitchMode(mode);
     }
 
+    public void SelectedModeOn()
+    {
+        print($"Cell: {worldPosition} selectedmode on");
+        selectedGO.SetActive(true);
+    }
+
+    public void UnselectedMode()
+    {
+        selectedGO.SetActive(false);
+    }
 
     private void OnMouseDown()
     {
@@ -78,7 +89,8 @@ public class Cell : MonoBehaviour
     private void OnMouseUp()
     {
         float timeSpent = Time.time - timeCounter;
-        if (timeCounter > 0.0f && timeSpent > clickSensitivity && GameManager.instance.inDrag == false)
+        if (timeCounter > 0.0f && timeSpent > GameManager.instance.clickSensitivity
+            && GameManager.instance.inDrag == false)
         {
             //Debug.Log($"{this.worldPosition} cell is clicked!");
             actionOnClicked();
